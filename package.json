@@ -1,0 +1,35 @@
+{
+	"name": "ortc-p2p",
+	"version": "0.1.0",
+	"description": "A library to enable P2P communication between clients using the ORTC protocol",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
+	"license": "ISC",
+	"files": [
+		"lib"
+	],
+	"scripts": {
+		"build": "tsc"
+	},
+	"dependencies": {
+		"awaitqueue": "^3.0.2",
+		"debug": "^4.3.4",
+		"events": "^3.3.0",
+		"h264-profile-level-id": "^2.0.0",
+		"sdp-transform": "^2.14.2",
+		"typescript": "^5.2.2",
+		"ua-parser-js": "^1.0.37",
+		"uuid": "^9.0.1"
+	},
+	"devDependencies": {
+		"@types/debug": "^4.1.10",
+		"@types/events": "^3.0.2",
+		"@types/node": "^20.8.10",
+		"@types/sdp-transform": "^2.4.9",
+		"@types/ua-parser-js": "^0.7.39",
+		"@types/uuid": "^9.0.8",
+		"@typescript-eslint/eslint-plugin": "^6.9.1",
+		"@typescript-eslint/parser": "^6.9.1",
+		"eslint": "^8.53.0"
+	}
+}
