@@ -14,7 +14,6 @@ import {
 } from './HandlerInterface';
 import { RtpCapabilities, RtpParameters } from '../RtpParameters';
 import { SctpCapabilities, SctpStreamParameters } from '../SctpParameters';
-import { UnsupportedError } from '../errors';
 
 const logger = new Logger('Firefox60');
 
@@ -101,11 +100,6 @@ export class Firefox60 extends HandlerInterface {
 
 	async getNativeSctpCapabilities(): Promise<SctpCapabilities> {
 		return { numStreams: SCTP_NUM_STREAMS };
-	}
-
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	async updateIceServers(iceServers: RTCIceServer[]): Promise<void> {
-		throw new UnsupportedError('not supported');
 	}
 
 	async send({ track, codecOptions, codec }: HandlerSendOptions): Promise<HandlerSendResult> {
