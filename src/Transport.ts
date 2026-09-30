@@ -260,22 +260,6 @@ export class Transport<TransportAppData extends AppData = AppData> extends Enhan
 	}
 
 	/**
-	 * Restart ICE connection.
-	 */
-	async restartIce({ iceParameters }: { iceParameters: IceParameters; }): Promise<void> {
-		logger.debug('restartIce()');
-
-		if (this.closed) {
-			throw new InvalidStateError('closed');
-		} else if (!iceParameters) {
-			throw new TypeError('missing iceParameters');
-		}
-
-		// Enqueue command.
-		return this._awaitQueue.push(async () => await this.handler.restartIce(iceParameters), 'transport.restartIce()');
-	}
-
-	/**
 	 * Update ICE servers.
 	 */
 	async updateIceServers({ iceServers }: { iceServers?: RTCIceServer[] } = {}): Promise<void> {

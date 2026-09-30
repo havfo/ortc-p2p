@@ -169,28 +169,6 @@ export abstract class HandlerInterface extends EnhancedEventEmitter<HandlerEvent
 		this.pc.setConfiguration(configuration);
 	}
 
-	async restartIce(iceParameters: IceParameters): Promise<void> {
-		this.assertNotClosed();
-
-		this._remoteSdp!.updateIceParameters(iceParameters);
-
-		if (!this._transportReady) {
-			return;
-		}
-
-		if (this._direction === 'send') {
-			const offer = await this.pc.createOffer({ iceRestart: true });
-
-			await this.pc.setLocalDescription(offer);
-			await this.pc.setRemoteDescription({ type: 'answer', sdp: this._remoteSdp!.getSdp() } as RTCSessionDescription);
-		} else {
-			await this.pc.setRemoteDescription({ type: 'offer', sdp: this._remoteSdp!.getSdp() } as RTCSessionDescription);
-			const answer = await this.pc.createAnswer();
-
-			await this.pc.setLocalDescription(answer);
-		}
-	}
-
 	async getTransportStats(): Promise<RTCStatsReport> {
 		this.assertNotClosed();
 
